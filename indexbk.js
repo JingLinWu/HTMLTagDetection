@@ -36,7 +36,7 @@ fs.readFile(inputHtmlFile, (err, html) => {
 	const virtualConsole = new jsdom.VirtualConsole();
 	const dom = new JSDOM(html, { virtualConsole, includeNodeLocations: true });
 	const document = dom.window.document;
-
+	console.log("ruleJSFile:" + ruleJSFile);
 	fs.readFile(ruleJSFile, (err, jsFile) => {
 
 		var jsonContent = JSON.parse(jsFile);

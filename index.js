@@ -32,33 +32,39 @@ var inputType = 0; //0 file, 2: string
 
 
 
-function detectTags(inputHTMLFile, inputRuleFile, outputFile){
+function detectTags(sourceInput, inputRuleFile, targetOutput){
 
-	inputRuleFile = typeof string  !== 'undefined' ? inputRuleFile : "./rule/rule.js";
-	outputFile = typeof string  !== 'undefined' ? outputFile : "";
-	if( outputFile = typeof string  !== 'undefined' ){
-		outputFile = outputFile; //file
-		outputType = 1;
+	if(!sourceInput || sourceInput === 'undefined'){
+
 	}else{
-		outputFile = "";
-		outputType = 0;
+		inputType = 0;
 	}
-	fs.readFile(inputHTMLFile, (err, html) => {
+
+	if(!targetOutput || targetOutput === 'undefined'){
+		outputType = 0;
+	}else{
+		outputType = 1;
+	}
+
+	
+	
+	fs.readFile(sourceInput, 'utf8', (err, html) => {
 
 		const virtualConsole = new jsdom.VirtualConsole();
 		const dom = new JSDOM(html, { virtualConsole, includeNodeLocations: true });
 		const document = dom.window.document;
 
-		
-		fs.readFile(inputRuleFile, (err, jsFile) => {
-
+		fs.readFile(inputRuleFile, 'utf8', (err, jsFile) => {
+			if (err) {
+        		throw err;
+    		}
 			var jsonContent = JSON.parse(jsFile);
 			var len = jsonContent.length;
 			var i = 0;
 			for( i = 0 ; i < len; i++){
-				var outputResult = "result:" + result[1];
 				var rule = jsonContent[i];
 				var result = checkNode(document, rule);
+				var outputResult = "result:" + result[1];
 				if( outputType == 0 ){
 					console.log(outputResult);	
 				}else if(outputType == 1) {
@@ -74,9 +80,12 @@ function detectTags(inputHTMLFile, inputRuleFile, outputFile){
 				
 			}
 
-		});
-		
 	});
+
+	});
+
+
+	
 }
 
 
