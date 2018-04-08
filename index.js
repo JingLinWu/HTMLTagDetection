@@ -68,7 +68,7 @@ function detectTags(sourceInput, inputRuleFile, targetOutput){
 				if( outputType == 0 ){
 					console.log(outputResult);	
 				}else if(outputType == 1) {
-					fs.writeFile(outputFile, outputResult, 'utf8', function (err) {
+					fs.writeFile(targetOutput, outputResult, 'utf8', function (err) {
 		                if (err) {  
 		                    console.log("write file error:" + err);
 		                    return;
