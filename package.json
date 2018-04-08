@@ -1,0 +1,28 @@
+{
+  "name": "htmltagdection",
+  "version": "1.0.0",
+  "description": "detect html tags",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JingLinWu/HTMLTagDetection.git"
+  },
+  "keywords": [
+    "HTML",
+    "Tag"
+  ],
+  "author": "jinglin_wu <adrawgill@gmail.com> (https://medium.com/@adrawgill/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JingLinWu/HTMLTagDetection/issues"
+  },
+  "homepage": "https://github.com/JingLinWu/HTMLTagDetection#readme",
+  "dependencies": {
+    "domutils": "^1.7.0",
+    "htmlparser2": "^3.9.2",
+    "jsdom": "11.6.2"
+  }
+}
