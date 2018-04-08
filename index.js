@@ -34,7 +34,7 @@ var inputType = 0; //0 file, 2: string
 
 function detectTags(inputHTMLFile, inputRuleFile, outputFile){
 
-	inputRuleFile = typeof string  !== 'undefined' ? inputRuleFile : "../rule/rule.js";
+	inputRuleFile = typeof string  !== 'undefined' ? inputRuleFile : "./rule/rule.js";
 	outputFile = typeof string  !== 'undefined' ? outputFile : "";
 	if( outputFile = typeof string  !== 'undefined' ){
 		outputFile = outputFile; //file
