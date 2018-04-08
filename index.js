@@ -162,4 +162,4 @@ function checkNode(domNode, ruleObj){
 
 
 
-module.exports = detectTags;
+module.exports.detectTags = detectTags;
