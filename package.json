@@ -1,6 +1,6 @@
 {
   "name": "htmltagdetector",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "detect html tags",
   "main": "index.js",
   "scripts": {

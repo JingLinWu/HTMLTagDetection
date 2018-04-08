@@ -26,29 +26,51 @@ var inputHtmlFile = process.argv[2];
 var ruleJSFile = process.argv[3];
 var outputfile = process.argv[4];
 
+var outputType = 0; //0 console, 1: file, 2: string
+var inputType = 0; //0 file, 2: string
 
 
 
-function detectTags(inputHTMLFile, inputRuleFile ){
+
+function detectTags(inputHTMLFile, inputRuleFile, outputFile){
 
 	inputRuleFile = typeof string  !== 'undefined' ? inputRuleFile : "../rule/rule.js";
+	outputFile = typeof string  !== 'undefined' ? outputFile : "";
+	if( outputFile = typeof string  !== 'undefined' ){
+		outputFile = outputFile; //file
+		outputType = 1;
+	}else{
+		outputFile = "";
+		outputType = 0;
+	}
 	fs.readFile(inputHTMLFile, (err, html) => {
 
 		const virtualConsole = new jsdom.VirtualConsole();
 		const dom = new JSDOM(html, { virtualConsole, includeNodeLocations: true });
 		const document = dom.window.document;
 
-		fs.readFile(ruleJSFile, (err, inputRuleFile) => {
+		
+		fs.readFile(inputRuleFile, (err, jsFile) => {
 
 			var jsonContent = JSON.parse(jsFile);
 			var len = jsonContent.length;
 			var i = 0;
 			for( i = 0 ; i < len; i++){
-
+				var outputResult = "result:" + result[1];
 				var rule = jsonContent[i];
 				var result = checkNode(document, rule);
-				console.log("result:" + result[1]);
+				if( outputType == 0 ){
+					console.log(outputResult);	
+				}else if(outputType == 1) {
+					fs.writeFile(outputFile, outputResult, 'utf8', function (err) {
+		                if (err) {  
+		                    console.log("write file error:" + err);
+		                    return;
+		                }
+		            });
+				}else {
 
+				}
 				
 			}
 
