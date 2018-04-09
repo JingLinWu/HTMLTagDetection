@@ -1,7 +1,7 @@
 {
   "name": "htmltagdetector",
-  "version": "1.0.23",
-  "description": "detect html tags",
+  "version": "1.0.24",
+  "description": "detect html tags by rules",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
