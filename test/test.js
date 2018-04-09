@@ -13,9 +13,10 @@ var debug = true;
 
 
 if (process.argv.length <= 3) {
-        if( debug )
-                console.log("Usage: node " + path.basename(__filename) + " <source of HTML file>" + " <target of js file>"+ " <output file>");
-            process.exit(-1);
+	if( debug ) {
+		console.log("Usage: node " + path.basename(__filename) + " <source of HTML file>" + " <target of js file>"+ " <output file>");
+	}
+    process.exit(-1);
 }
 
 var inputHtmlFile = process.argv[2];
